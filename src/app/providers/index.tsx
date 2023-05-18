@@ -1,16 +1,17 @@
+import {CurrentWeather} from 'pages/currentWeather';
 import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <div>Hello world!</div>,
-        errorElement: <div>404</div>
-    },
+  {
+    path: '/',
+    element: <CurrentWeather />,
+    errorElement: <div>404</div>,
+  },
 ]);
 
 export const Providers = () => {
-    return <RouterProvider router={ router } />
-}
+  return <RouterProvider router={ router } />;
+};
