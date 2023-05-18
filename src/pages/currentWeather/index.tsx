@@ -3,7 +3,7 @@ import {TextOut} from 'shared/textOut';
 import {currentWeatherAPI} from 'app/services/currentWeatherService';
 import {useEffect, useState} from 'react';
 import {Loader} from '@mantine/core';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import {IconMoon} from '@tabler/icons-react';
 import {WeatherCard} from 'widgets/weatherCard';
 
@@ -39,20 +39,22 @@ export const CurrentWeather = () => {
     return getUserCoordinates();
   }, []);
 
-  return data && <Block>
-    <WeatherCard
-      timesDay='Now'
-      time={dayjs().format('hh:mm')}
-      currentTemp={data.main.temp}
-      icon={<IconMoon/>}
-    />
-    <TextOut>
-      {
-        isLoading && <Loader />
-      }
-      {
-        error && <TextOut>{JSON.stringify(error)}</TextOut>
-      }
-    </TextOut>
-  </Block>;
+  return <>
+    <Block>
+      <WeatherCard
+        timesDay='Now'
+        time={dayjs().format('hh:mm')}
+        currentTemp={data?.main.temp ?? 0}
+        icon={<IconMoon/>}
+      />
+      <TextOut>
+        {
+          isLoading && <Loader />
+        }
+        {
+          error && <TextOut>{JSON.stringify(error)}</TextOut>
+        }
+      </TextOut>
+    </Block>
+  </>;
 };
